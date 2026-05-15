@@ -1,11 +1,12 @@
-import pyromod # Wajib paling atas untuk fitur percakapan bot
+import pyromod # 
 from pyrogram import Client
-from config import API_ID, API_HASH
+from config import API_ID, API_HASH, SESSION_STRING 
 
 app = Client(
-    "myuserbot",             # Pastikan ini sesuai dengan nama file .session kamu
+    "myuserbot",
     api_id=API_ID,
     api_hash=API_HASH,
-    workers=20,              # Biar bot bisa multitasking (goreng foto + clone sekaligus)
-    plugins=dict(root="modules") # OTOMATIS membaca semua file .py di dalam folder modules
+    session_string=SESSION_STRING,
+    workers=20,
+    plugins=dict(root="modules")
 )
