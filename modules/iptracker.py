@@ -35,11 +35,14 @@ async def track_ip(client, message):
         )
 
         if is_sakti:
+            # Perbaikan f-string baris 42 agar tidak bentrok tanda petik
+            lat = r.get('lat')
+            lon = r.get('lon')
             res += (
                 f"\n🌐 {bold('ASN:')} {r.get('as')}\n"
                 f"⏰ {bold('Timezone:')} {r.get('timezone')}\n"
                 f"📱 {bold('Mobile:')} {'YA' if r.get('mobile') else 'TIDAK'}\n"
-                f"🗺️ {bold('Koord:')} {mono(f'{r.get('lat')},{r.get('lon')}')}"
+                f"🗺️ {bold('Koord:')} {mono(f'{lat},{lon}')}"
             )
         
         await status.edit(result_box(f"IP INFO: {ip}", res, icon="🌐"))
